@@ -2,6 +2,8 @@
 
 O SQTPM é um site utilizado pelo professor para envio de trabalhos e correção automática, onde os problemas são no estilo problemas de maratonas de computação, utilizando as estruturas estudadas e desenvolvidas nas aulas é preciso resolver os problemas apresentados. Somente os alunos cadastrados na disciplina tem acesso, portanto aqui são apresentados os problemas desenvolvidos ao longo do semestre em que realizei a matéria.
 
+O sqtpm é um sistema que automatiza a recepção e a verificação da correção de trabalhos de programação. A primeira versão do sqtpm foi colocada no ar em 2004.
+
 # 00-warmup
 
 Escreva um programa que leia 2 valores inteiros e armazene-os nas variáveis A e B.
