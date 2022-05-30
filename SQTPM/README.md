@@ -169,3 +169,159 @@ Vencedor(a): Pedro
 - Para mover os nós da lista, você pode apenas manipular os ponteiros da lista, isto é, não pode criar/remover nós, ou modificar os dados dos nós da lista.
 - Você deve alocar (malloc) apenas o espaço necessário para resolver o problema.
 - Você deve desalocar (free) todo o espaço alocado dinamicamente.
+
+# ed-02-bacia-hidrografica
+
+![Bacia Hidrográfica](https://sp-ao.shortpixel.ai/client/to_webp,q_glossy,ret_img,w_300/https://www.cobali.org/wp-content/uploads/2016/11/Image-Bassin-versant-300x210.png)
+
+Uma bacia hidrográfica é o conjunto de terras que fazem a drenagem da água das chuvas para um mesmo curso de águas. A formação da bacia é feita através dos desníveis dos terrenos que orientam os cursos da água, sempre das áreas mais altas para as mais baixas. Essa área é limitada por uma linha divisora de águas que a separam duas bacias adjacentes e que pode ser determinada nas cartas topográficas. (Fonte: [Wikipedia](https://pt.wikipedia.org/wiki/Bacia_hidrogr%C3%A1fica))
+
+Geólogos costumam dividir uma área de terras em diferentes regiões com base em sua bacia hidrográfica. Seu trabalho é ajudar nessa tarefa.
+
+## Problema
+
+Dado um mapa de tamanho H por W em que H e W indicam, respectivamente, sua altura e largura, representado por uma matriz M de 2 dimensões com H linhas e W colunas, cada célula M[i,j] armazena um inteiro f que representa a altura do ponto (i,j) no mapa.
+
+O objetivo é rotular o mapa (a matriz) de forma que pontos que pertençam à mesma bacia hidrográfica tenham o mesmo rótulo, observadas as seguintes regras:
+
+- Cada célula M[i,j], possui 4 células vizinhas (com exceção das bordas da matriz que podem ter apenas 2 ou 3) e a visitação da célula M[i,j] a seus vizinhos é feito na ordem: Norte, Oeste, Leste, Sul.
+  ou seja:
+  - M[i-1,j] → M[i,j-1] → M[i,j+1] → M[i+1,j]
+
+|         | **j-1** | **j**  | **j+1** |
+| ------- | ------- | ------ | ------- |
+| **i-1** | ---     | 1o     | ---     |
+| **i**   | 2o      | M[i,j] | 3o      |
+| **i+1** | ---     | 4o     | ---     |
+
+- A partir de cada célula, a água pode fluir (cair) para no máximo uma de suas quatro células vizinhas.
+
+- Caso a célula M[i,j] não possua nenhuma célula vizinha com altura menor que a sua, então a água não flui para nenhuma outra célula, e M[i,j] é chamada de **ponto dissipador**.
+
+- Caso contrário, a água de M[i,j] flui para a célula vizinha de menor altitude.
+
+- Em caso de empate entre células vizinhas a água flui para a célula vizinha que pertence à bacia hidrográfica de menor altitude (caso continue o empate, a água flui para a célula pertencente à bacia de menor rótulo, definido a seguir). <-deve-se considerar a ordem de visitação estipulada em (i)-->
+
+Cada célula que flui diretamente ou indiretamente para o mesmo **ponto dissipador** é parte de uma mesma bacia hidrográfica.
+
+Dessa forma, individualmente cada **ponto dissipador** corresponde a uma bacia diferente.
+
+Cada bacia deve ser rotulada por uma letra minúscula única, tal que, a primeira bacia recebe a letra 'a', a segunda a letra 'b' e assim por diante, até a letra 'z'. A ordem entre as bacias é determinada pela ordem do seu ponto dissipador, que é determinada por sua posição (i, j), considerando primeiro o valor do índice i, e caso haja empate do índice j (ou seja, considere o sentido da matriz de cima para baixo e da esquerda para a direita). Ex: um ponto dissipador M[1,3] é menor do que M[1,4], e M[1,4] é menor que M[2,1].
+
+_Dica:_ Você pode calcular para onde cada ponto de água vai fluir, ou inversamente pensar nos pontos em que a água se acumulará.
+
+## Especificações de entrada e saída
+
+### Entrada
+
+A entrada contém um único caso de teste, a primeira linha contém os dois inteiros H e W (1 ≤ H, W ≤ 100). Em seguida, as próximas H linhas contêm W colunas de inteiros f especificando as altitudes de cada célula M[i,j] (0 ≤ f < 100).
+
+Você pode supor que haverá no máximo 26 bacias hidrográficas em todas as entradas de teste.
+
+### Saída
+
+A saída deve apresentar o mapa com os rótulos das bacias hidrográficas de cada célula.
+
+## Exemplos
+
+### Exemplo 1
+
+| Entrada |
+| ------- |
+
+```
+3 3
+9 6 3
+5 9 6
+3 5 9
+```
+
+| Saída |
+| ----- |
+
+```
+b a a
+b b a
+b b b
+
+```
+
+_Note que nesse exemplo os pontos dissipadores estão nos cantos inferior esquerdo e superior direito (M[2,0] e M[0,2]). A água da diagonal flui em direção ao canto inferior esquerdo por causa da altitude menor desse lado (5 versus 6)_
+
+### Exemplo 2
+
+| Entrada |
+| ------- |
+
+```
+5 5
+1 2 3 4 5
+2 9 3 9 6
+3 3 0 8 7
+4 9 8 9 8
+5 6 7 8 9
+```
+
+| Saída |
+| ----- |
+
+```
+a a a a a
+a a b b a
+a b b b a
+a b b b a
+a a a a a
+
+```
+
+## SUGESTÕES
+
+Utilize o conceito de fila ordenada.
+
+### Fila ordenada
+
+A fila ordenada pode ser vista como uma série de filas simples em que a cada fila é associado um nível. Os clientes são retirados apenas da fila de maior nível. Desta forma, um cliente é atendido:
+
+- antes de todos os clientes de filas de menor nível, mesmo que estes tenham chegado antes dele.
+- antes de todos os clientes de sua mesma fila que chegaram após o mesmo.
+- Após todos os clientes de filas de maior nível, mesmo que estes tenham chegado após o mesmo
+
+Um algoritmo que implementa uma fila ordenada funciona da seguinte forma:
+
+### Algoritmo
+
+- Enquanto fila ordenada não for vazia { - Um cliente X é retirado da fila ordenada.
+
+- Para cada vizinho Y de X sem rótulo faça:
+
+  - atribua o mesmo rótulo de X a Y na matriz.
+  - insira o ponto Y na fila ordenada; o seu valor em M indica seu nível de prioridade na fila ordenada.
+
+  }
+
+### Soluções para o Problema da Linha Divisora de Águas
+
+1. Crie uma fila ordenada com 100 filas, uma para cada possível valor na matriz M.
+2. Encontre os pontos dissipadores em M e atribua seus rótulos.
+3. Insira cada ponto dissipador na fila correspondente à sua altura.
+4. Enquanto a fila ordenada não vazia {
+   - Retire o ponto X da fila ordenada.
+   - Para cada ponto Y vizinho à X que não está rotulado faça:
+     - Insira o ponto Y na fila ordenada (em sua fila correspondente);.
+     - Atribua o rótulo do ponto X ao ponto Y;
+       }
+
+## ATENÇÃO
+
+- Você deve implemetar (corretamente) um TAD de Pilhas que utiliza outro TAD de Listas Ligadas.
+
+- O código principal deve ser entregue em um arquivo separado (ex. main.c) do TAD.
+  No TAD, a interface e a implementação também devem estar em arquivos separados (ex. nomeTAD.c e nomeTAD.h).
+
+- O Trabalho deverá ser entregue comentado e com a indentação correta.
+
+- Todo o acesso aos dados deve ser feito respeitando a política de acesso das Pilhas (LIFO).
+
+- Você deve alocar (malloc) apenas o espaço necessário para resolver o problema.
+
+- Você deve desalocar (free) todo o espaço alocado dinamicamente.
