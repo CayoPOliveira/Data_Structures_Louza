@@ -8,6 +8,7 @@ A playlist completa pode ser acessada no canal do youtube [Prof. Felipe Louza - 
 
 - Aula 1 - [Vetores, TADS, Makefile](/Aula1/)
 - Aula 2 - [Listas Ligadas (Listas Encadeadas)](/Aula2/)
+- Aula 3 - [Variações de Listas Ligadas](/Aula3/)
 
 ## TADS
 
@@ -29,8 +30,12 @@ A playlist completa pode ser acessada no canal do youtube [Prof. Felipe Louza - 
 - [Lista Circular Duplamente Ligada](/lib/lista_circular_duplamente_ligada)
   - [ListaLigadaTAD.h](/lib/lista_circular_duplamente_ligada/ListaLigadaTAD.h)
   - [ListaLigadaTAD.c](/lib/lista_circular_duplamente_ligada/ListaLigadaTAD.c)
+- [Pilha](/lib/pilha_com_lista/)
+  - [PilhaTAD.h](/lib/pilha_com_lista/PilhaTAD.h)
+  - [PilhaTAD.c](/lib/pilha_com_lista/PilhaTAD.c)
 
 ## Trabalhos
 
 - [Warmup](/SQTPM/warmup00/)
 - [Acampamento](/SQTPM/ED01/)
+- [Bacias Hidrográficas](/SQTPM/ED02/)
