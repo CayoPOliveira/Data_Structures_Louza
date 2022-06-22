@@ -16,6 +16,6 @@ int main()
         imprimir_lista(L);
         printf("[%d]\n", tamanho_lista(L));
     }
-    destruir_lista(&L); // testar valgrind!!
+    destruir_lista(&L);
     return 0;
 }

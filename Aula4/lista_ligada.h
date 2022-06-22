@@ -23,6 +23,6 @@ void remover_valor(No **L, int x);
 
 // Buscar
 int buscar_valor(No *L, int x);
-int acessar_primeiro(No *p);
+int acessar_primeiro(No *L);
 
 #endif

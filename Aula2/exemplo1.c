@@ -11,7 +11,7 @@ int main()
         if (num > 0)
             adicionar_inicio(&L, num);
     } while (num > 0);
-    imprimir_lista(L); /*(em ordem reversa de inserc¸˜ao)*/
+    imprimir_lista(L); /*(em ordem reversa de inserção)*/
     destruir_lista(&L);
     return 0;
 }

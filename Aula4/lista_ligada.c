@@ -153,6 +153,6 @@ int acessar_primeiro(No *p)
 {
     if (p == NULL)
         return -1; // lista vazia
-    No *q = p->prox;
+    No *q = p;
     return q->dado;
 }
