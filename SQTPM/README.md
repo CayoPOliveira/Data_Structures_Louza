@@ -1,3 +1,5 @@
+<!-- @format -->
+
 # O QUE É O SQTPM?
 
 O SQTPM é um site utilizado pelo professor para envio de trabalhos e correção automática, onde os problemas são no estilo problemas de maratonas de computação, utilizando as estruturas estudadas e desenvolvidas nas aulas é preciso resolver os problemas apresentados. Somente os alunos cadastrados na disciplina tem acesso, portanto aqui são apresentados os problemas desenvolvidos ao longo do semestre em que realizei a matéria.
@@ -161,14 +163,14 @@ Vencedor(a): Pedro
 
 ## ATENÇÃO
 
-- Você deve implemetar (corretamente) um TAD de listas ligadas.
-- O código principal deve ser entregue em um arquivo separado (ex. main.c) do TAD.
-- No TAD, a interface e a implementação também devem estar em arquivos separados (ex. nomeTAD.c e nomeTAD.h).
-- O Trabalho deverá ser entregue comentado e com a indentação correta.
-- Você deve resolver o problema utilizando listas ligadas.
-- Para mover os nós da lista, você pode apenas manipular os ponteiros da lista, isto é, não pode criar/remover nós, ou modificar os dados dos nós da lista.
-- Você deve alocar (malloc) apenas o espaço necessário para resolver o problema.
-- Você deve desalocar (free) todo o espaço alocado dinamicamente.
+-   Você deve implemetar (corretamente) um TAD de listas ligadas.
+-   O código principal deve ser entregue em um arquivo separado (ex. main.c) do TAD.
+-   No TAD, a interface e a implementação também devem estar em arquivos separados (ex. nomeTAD.c e nomeTAD.h).
+-   O Trabalho deverá ser entregue comentado e com a indentação correta.
+-   Você deve resolver o problema utilizando listas ligadas.
+-   Para mover os nós da lista, você pode apenas manipular os ponteiros da lista, isto é, não pode criar/remover nós, ou modificar os dados dos nós da lista.
+-   Você deve alocar (malloc) apenas o espaço necessário para resolver o problema.
+-   Você deve desalocar (free) todo o espaço alocado dinamicamente.
 
 # ed-02-bacia-hidrografica
 
@@ -184,9 +186,9 @@ Dado um mapa de tamanho H por W em que H e W indicam, respectivamente, sua altur
 
 O objetivo é rotular o mapa (a matriz) de forma que pontos que pertençam à mesma bacia hidrográfica tenham o mesmo rótulo, observadas as seguintes regras:
 
-- Cada célula M[i,j], possui 4 células vizinhas (com exceção das bordas da matriz que podem ter apenas 2 ou 3) e a visitação da célula M[i,j] a seus vizinhos é feito na ordem: Norte, Oeste, Leste, Sul.
-  ou seja:
-  - M[i-1,j] → M[i,j-1] → M[i,j+1] → M[i+1,j]
+-   Cada célula M[i,j], possui 4 células vizinhas (com exceção das bordas da matriz que podem ter apenas 2 ou 3) e a visitação da célula M[i,j] a seus vizinhos é feito na ordem: Norte, Oeste, Leste, Sul.
+    ou seja:
+    -   M[i-1,j] → M[i,j-1] → M[i,j+1] → M[i+1,j]
 
 |         | **j-1** | **j**  | **j+1** |
 | ------- | ------- | ------ | ------- |
@@ -194,13 +196,13 @@ O objetivo é rotular o mapa (a matriz) de forma que pontos que pertençam à me
 | **i**   | 2o      | M[i,j] | 3o      |
 | **i+1** | ---     | 4o     | ---     |
 
-- A partir de cada célula, a água pode fluir (cair) para no máximo uma de suas quatro células vizinhas.
+-   A partir de cada célula, a água pode fluir (cair) para no máximo uma de suas quatro células vizinhas.
 
-- Caso a célula M[i,j] não possua nenhuma célula vizinha com altura menor que a sua, então a água não flui para nenhuma outra célula, e M[i,j] é chamada de **ponto dissipador**.
+-   Caso a célula M[i,j] não possua nenhuma célula vizinha com altura menor que a sua, então a água não flui para nenhuma outra célula, e M[i,j] é chamada de **ponto dissipador**.
 
-- Caso contrário, a água de M[i,j] flui para a célula vizinha de menor altitude.
+-   Caso contrário, a água de M[i,j] flui para a célula vizinha de menor altitude.
 
-- Em caso de empate entre células vizinhas a água flui para a célula vizinha que pertence à bacia hidrográfica de menor altitude (caso continue o empate, a água flui para a célula pertencente à bacia de menor rótulo, definido a seguir). <-deve-se considerar a ordem de visitação estipulada em (i)-->
+-   Em caso de empate entre células vizinhas a água flui para a célula vizinha que pertence à bacia hidrográfica de menor altitude (caso continue o empate, a água flui para a célula pertencente à bacia de menor rótulo, definido a seguir). <-deve-se considerar a ordem de visitação estipulada em (i)-->
 
 Cada célula que flui diretamente ou indiretamente para o mesmo **ponto dissipador** é parte de uma mesma bacia hidrográfica.
 
@@ -282,22 +284,22 @@ Utilize o conceito de fila ordenada.
 
 A fila ordenada pode ser vista como uma série de filas simples em que a cada fila é associado um nível. Os clientes são retirados apenas da fila de maior nível. Desta forma, um cliente é atendido:
 
-- antes de todos os clientes de filas de menor nível, mesmo que estes tenham chegado antes dele.
-- antes de todos os clientes de sua mesma fila que chegaram após o mesmo.
-- Após todos os clientes de filas de maior nível, mesmo que estes tenham chegado após o mesmo
+-   antes de todos os clientes de filas de menor nível, mesmo que estes tenham chegado antes dele.
+-   antes de todos os clientes de sua mesma fila que chegaram após o mesmo.
+-   Após todos os clientes de filas de maior nível, mesmo que estes tenham chegado após o mesmo
 
 Um algoritmo que implementa uma fila ordenada funciona da seguinte forma:
 
 ### Algoritmo
 
-- Enquanto fila ordenada não for vazia { - Um cliente X é retirado da fila ordenada.
+-   Enquanto fila ordenada não for vazia { - Um cliente X é retirado da fila ordenada.
 
-- Para cada vizinho Y de X sem rótulo faça:
+-   Para cada vizinho Y de X sem rótulo faça:
 
-  - atribua o mesmo rótulo de X a Y na matriz.
-  - insira o ponto Y na fila ordenada; o seu valor em M indica seu nível de prioridade na fila ordenada.
+    -   atribua o mesmo rótulo de X a Y na matriz.
+    -   insira o ponto Y na fila ordenada; o seu valor em M indica seu nível de prioridade na fila ordenada.
 
-  }
+    }
 
 ### Soluções para o Problema da Linha Divisora de Águas
 
@@ -305,23 +307,110 @@ Um algoritmo que implementa uma fila ordenada funciona da seguinte forma:
 2. Encontre os pontos dissipadores em M e atribua seus rótulos.
 3. Insira cada ponto dissipador na fila correspondente à sua altura.
 4. Enquanto a fila ordenada não vazia {
-   - Retire o ponto X da fila ordenada.
-   - Para cada ponto Y vizinho à X que não está rotulado faça:
-     - Insira o ponto Y na fila ordenada (em sua fila correspondente);.
-     - Atribua o rótulo do ponto X ao ponto Y;
-       }
+    - Retire o ponto X da fila ordenada.
+    - Para cada ponto Y vizinho à X que não está rotulado faça:
+        - Insira o ponto Y na fila ordenada (em sua fila correspondente);.
+        - Atribua o rótulo do ponto X ao ponto Y;
+          }
 
 ## ATENÇÃO
 
-- Você deve implemetar (corretamente) um TAD de Pilhas que utiliza outro TAD de Listas Ligadas.
+-   Você deve implemetar (corretamente) um TAD de Pilhas que utiliza outro TAD de Listas Ligadas.
 
-- O código principal deve ser entregue em um arquivo separado (ex. main.c) do TAD.
-  No TAD, a interface e a implementação também devem estar em arquivos separados (ex. nomeTAD.c e nomeTAD.h).
+-   O código principal deve ser entregue em um arquivo separado (ex. main.c) do TAD.
+    No TAD, a interface e a implementação também devem estar em arquivos separados (ex. nomeTAD.c e nomeTAD.h).
 
-- O Trabalho deverá ser entregue comentado e com a indentação correta.
+-   O Trabalho deverá ser entregue comentado e com a indentação correta.
 
-- Todo o acesso aos dados deve ser feito respeitando a política de acesso das Pilhas (LIFO).
+-   Todo o acesso aos dados deve ser feito respeitando a política de acesso das Pilhas (LIFO).
 
-- Você deve alocar (malloc) apenas o espaço necessário para resolver o problema.
+-   Você deve alocar (malloc) apenas o espaço necessário para resolver o problema.
 
-- Você deve desalocar (free) todo o espaço alocado dinamicamente.
+-   Você deve desalocar (free) todo o espaço alocado dinamicamente.
+
+# ed-03-pre-em-pos
+
+![Árvore Binária de Busca](img/ABBexample.png)
+
+Um problema comum em estruturas de dados é determinar o percurso de uma árvore binária. Existem três maneiras clássicas de fazer isso:
+Pré-ordem: Você deve visitar primeiro a raiz, depois a sub-árvore esquerda e por último a sub-árvore direita.
+In-ordem: Você deve visitar primeiro a sub-árvore esquerda, depois a raiz e por último a sub-árvore direita.
+Pós-ordem: Você deve visitar primeiro a sub-árvore esquerda, depois a sub-árvore direita e por último a raiz.
+Veja a figura abaixo:
+
+        A
+       / \
+      B   D
+     /   / \
+    C   E   F
+
+O resultado do percurso em pré, in e pós-ordem é, respectivamente: ABCDEF, CBAEDF e CBEFDA.
+
+Neste problema, você deve computar o percurso em pós-ordem de uma árvore binária dados os seus percursos in-ordem e pré-ordem.
+
+## Especificações de entrada e saída
+
+### Entrada
+
+O conjunto de entrada consiste de um número C ≤ 2000, que dá o número de casos de teste e C linhas, uma para cada caso de teste.
+
+Cada caso de teste começa com um número 1 ≤ N ≤ 52, o número de nós nessa árvore arbitrária.
+
+A seguir, tem-se duas cadeias de caracteres S1 e S2 que descrevem o resultado do percurso da árvore em pré-ordem e in-ordem. Os nós da árvore são rotulados com caracteres diferentes no intervalo a..z e A..Z. Os valores de N, S1 e S2 são separados por um espaço em branco.
+
+### Saída
+
+Para cada conjunto de entrada, você deve imprimir uma linha contendo o percurso em pós-ordem da árvore correspondente.
+
+## Exemplos
+
+### Exemplo 1
+
+| Entrada |
+| ------- |
+
+```
+1
+6 ABCDEF CBAEDF
+```
+
+| Saída |
+| ----- |
+
+```
+CBEFDA
+
+```
+
+### Exemplo 2
+
+| Entrada |
+| ------- |
+
+```
+2
+3 xYz Yxz
+3 abc cba
+```
+
+| Saída |
+| ----- |
+
+```
+Yzx
+cba
+
+```
+
+## ATENÇÃO
+
+-   Você deve implemetar (corretamente) um TAD de Árvores Binárias.
+
+-   O código principal deve ser entregue em um arquivo separado (ex. main.c) do TAD.
+    No TAD, a interface e a implementação também devem estar em arquivos separados (ex. nomeTAD.c e nomeTAD.h).
+
+-   O Trabalho deverá ser entregue comentado e com a indentação correta.
+
+-   Você deve alocar (malloc) apenas o espaço necessário para resolver o problema.
+
+-   Você deve desalocar (free) todo o espaço alocado dinamicamente.
