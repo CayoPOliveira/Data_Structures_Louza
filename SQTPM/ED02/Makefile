@@ -20,5 +20,5 @@ clean:
 	rm -rf *.o $(MAIN_FILE) ./out/*.o
 
 valgrind: $(MAIN_FILE)
-	valgrind --leak-check=full --show-leak-kinds=all --track-origins=yes ./$(MAIN_FILE) < in/$(MAIN_FILE)_test_0.in > out/$(MAIN_FILE)_test_0.o
-	valgrind --leak-check=full --show-leak-kinds=all --track-origins=yes ./$(MAIN_FILE) < in/$(MAIN_FILE)_test_1.in > out/$(MAIN_FILE)_test_1.o
+	valgrind --leak-check=full --show-leak-kinds=all --track-origins=yes ./$(MAIN_FILE) < in/$(MAIN_FILE)_test_0.in > out/$(MAIN_FILE)_test_0.out
+	valgrind --leak-check=full --show-leak-kinds=all --track-origins=yes ./$(MAIN_FILE) < in/$(MAIN_FILE)_test_1.in > out/$(MAIN_FILE)_test_1.out
